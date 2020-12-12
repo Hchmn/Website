@@ -6,3 +6,4 @@
   - Purchase history
   - View the product sell in the store
   - Claim redeemable products
+  - card data

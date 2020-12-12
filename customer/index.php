@@ -9,7 +9,7 @@
     // $row is a dictionary where the keys are the column names of the table
     // $row['customer_id'], $row['firstname'] ... etc
     while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["customer_id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    echo "id: " . $row["customer_id"]. " - Name: " . $row["fname"]. " " . $row["lname"]. "<br>";
   }
 
  ?>

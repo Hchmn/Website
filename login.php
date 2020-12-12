@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -43,6 +48,15 @@
 				   </div>
 					</form>
 				</div>
+				<?php if(isset($_SESSION['ERROR 1'])){
+					?>
+					<div class="">
+						<p>INVALID PASSWORD OR USERNAME</p>
+
+					</div>
+					<?php
+					unset($_SESSION['ERROR 1']);
+				} ?>
 
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">

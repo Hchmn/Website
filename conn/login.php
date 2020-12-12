@@ -20,6 +20,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
   }
 
+  else {
+    $_SESSION['ERROR 1'] = 1;
+    header("Location: \\Website\\login.php");
+    die;
+  }
+
 
 
 

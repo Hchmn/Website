@@ -46,7 +46,7 @@
 
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
-						Don't have an account? <a href="#" class="ml-2">Sign Up</a>
+						Don't have an account? <a href="registration\reg_form.html" class="ml-2">Sign Up</a>
 					</div>
 				</div>
 			</div>

@@ -1,5 +1,5 @@
 <?php
-require("connection.php");
+require($_SERVER['DOCUMENT_ROOT']."/Website/conn/connection.php");
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $username = $_POST['username'];

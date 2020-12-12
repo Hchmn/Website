@@ -36,7 +36,7 @@
 							<input type="password" name="" class="form-control input_pass" value="" placeholder="password">
 						</div>
 						<div class="form-group">
-							
+
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
 				 	<button type="button" name="button" class="btn login_btn">Login</button>

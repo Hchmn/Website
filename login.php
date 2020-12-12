@@ -22,24 +22,24 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form action="" class="" method="post">
+					<form action="\Website\conn\login.php" class="" method="post">
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="" class="form-control input_user" value="" placeholder="username">
+							<input type="text" name="username" required class="form-control input_user" value="" placeholder="username">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="" class="form-control input_pass" value="" placeholder="password">
+							<input type="password" name="password" required class="form-control input_pass" value="" placeholder="password">
 						</div>
 						<div class="form-group">
 
 						</div>
 							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="button" name="button" class="btn login_btn">Login</button>
+				 	<button type="submit" name="button" class="btn login_btn">Login</button>
 				   </div>
 					</form>
 				</div>

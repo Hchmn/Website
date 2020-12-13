@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Customer | Edit</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+<body class="h-100">
+  <!-- Header -->
+  <div class="container-fluid border border-danger d-flex flex-row" style="height:5vh;background: #c0392b !important;">
+    <a href="..\customer\index.php" class="col-7"><img src="..\img\logo_250x250.png" alt="logo" class="h-100" style=""></a>
+    <div class="col-5 d-flex flex-row pt-2 pb-2 justify-content-end">
+      <!-- Redirect to checkout page edit -->
+      <button href="#" disabled class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style="">
+        <p class="m-0"><i class="fas fa-shopping-cart"></i><small class="">  Check out</small></p></button>
+      <!-- Redirect to customer page edit -->
+      <a href="index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Customer Name</small></p></a>
+      <!-- Unset the session first (create a file logout.php in conn folder)
+      before you go back to the login page -->
+      <a href="#" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
+    </div>
+  </div>
+  <div class="container h-100 p-3" style="background: #60a3bc;">
+    <div class="h-auto rounded p-3" style="background: #f39c12;">
+      <p class="h5">Customer profile</p>
+      <form class="" action="" method="post">
+        <!-- Editable data here -->
+        <!-- Ikaw nay butang sa mga Input element -->
+        <!-- Kini na design gamita -->
+        <div class="input-group mb-3 w-50">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+      </form>
+    </div>
+    <div class="h-auto rounded p-3 mt-3" style="background: #f39c12;">
+      <div class="d-flex flex-row justify-content-around">
+        <p class="h5 col">Card</p>
+        <button class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i>  Claim Card</button>
+      </div>
+      <div class="d-flex flex-row">
+        <div id="card id here" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
+        style="background: #f39c12;border-radius:10px;">
+          <p>Card ID #</p>
+          <p>Card Points: </p>
+        </div>
+        <div id="card id here" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
+        style="background: #f39c12;border-radius:10px;">
+          <p>Card ID #</p>
+          <p>Card Points: </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="h-auto rounded p-3 mt-3" style="background: #f39c12;">
+      Purchase history here
+      <div class="">
+        <div class="border border-dark">
+          <p>Reciept #</p>
+          <p>Purchase Information here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

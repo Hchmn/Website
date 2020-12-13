@@ -33,14 +33,15 @@ $result = mysqli_query($con,$sql);
   <div class="container h-100 p-3" style="background: #60a3bc;">
     <div class="h-auto rounded p-3" style="background: #f39c12;">
       <p class="h5">Customer profile</p>
-      <form class="" action="Website\conn\customer_profile.php" method="post">
+      <form class="" action="\Website\conn\customer_profile.php" method="post">
         <?php while ($rows = mysqli_fetch_assoc($result)) {
-             $gender = $row['gender'];
-             $fn = $row['fname'];
-             $ln = $row['lname'];
-             $contact_number = $row['contact_number'];
-             $age = $row['age'];
+             $gender = $rows['gender'];
+             $fn = $rows['fname'];
+             $ln = $rows['lname'];
+             $contact_number = $rows['contact_number'];
+             $age = $rows['age'];
              // $address
+
          }
         ?>
 
@@ -48,25 +49,26 @@ $result = mysqli_query($con,$sql);
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Firstname</span>
           </div>
-          <input type="text" name="fn" placeholder="<?php echo "$fn"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" value = "<?php echo "$fn"; ?>" name="fn" placeholder="<?php echo "$fn"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3 w-50">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Lastname</span>
           </div>
-          <input type="text" name="ln" placeholder="<?php echo "$ln"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" value = "<?php echo "$ln"; ?>"name="ln" placeholder="<?php echo "$ln"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3 w-50">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Gender</span>
           </div>
           <!-- SELECT -->
-          <select name="Gender" class="form-select">
+          <select name="gender" class="form-select">
           <?php
             if($gender == 1){
-              ?><option value="1">Male</option><?php
+              ?><option selected value="1">Male </option> <option  value="2">Female</option><?php
+
             }else{
-              ?><option value="2">Female</option><?php
+              ?><option selected value="2">Female</option> <option  value="1">Male </option> <?php
             }
            ?>
            </select>
@@ -75,25 +77,26 @@ $result = mysqli_query($con,$sql);
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Contact number</span>
           </div>
-          <input type="text" name="contact_number" placeholder="<?php echo "$contact_number"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text"  value = "<?php echo "$contact_number"; ?>" name="contact_number" placeholder="<?php echo "$contact_number"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3 w-50">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
           </div>
-          <input type="text" name="age" placeholder="<?php echo "$age"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" value = "<?php echo "$age"; ?>"  name="age" placeholder="<?php echo "$age"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
+      <button type="submit" name="change_profile">Save</button>
       </form>
     </div>
     <div class="h-auto rounded p-3 mt-3" style="background: #f39c12;">
 
-      <form class="" action="\Website\conn\claim_card.php" method="post">
+      <form class="" action="index.html" method="post">
       <div class="d-flex flex-row justify-content-around">
         <p class="h5 col">Card</p>
-        <button class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i name="claim_card">  Claim Card</button>
+        <button type = "submit" class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i name="claim_card">  Claim Card</button>
       </div>
-      </form>
 
+      </form>
       <div class="d-flex flex-row">
         <div id="card id here" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
         style="background: #f39c12;border-radius:10px;">

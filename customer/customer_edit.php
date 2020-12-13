@@ -34,28 +34,54 @@ $result = mysqli_query($con,$sql);
     <div class="h-auto rounded p-3" style="background: #f39c12;">
       <p class="h5">Customer profile</p>
       <form class="" action="Website\conn\customer_profile.php" method="post">
-        <div class="">
-          <b>
-           <?php while ($rows = mysqli_fetch_assoc($result)) {
-             if($rows['gender'] == 1){
-               $rows['gender'] = 'Male';
-             }
-             else {
-               $rows['gender'] = 'Female';
-             }
-             echo "Name: " . $rows['fname'] . " " . $rows['lname'] . "<br>" . 'Age: ' . $rows['age']
-             . "<br>" . "Gender: " . $rows['gender'] . "<br>" . "Contact Number: " . $rows['contact_number'] . "<br>"
-             . "Date Started: " . $rows['date'];
+        <?php while ($rows = mysqli_fetch_assoc($result)) {
+             $gender = $row['gender'];
+             $fn = $row['fname'];
+             $ln = $row['lname'];
+             $contact_number = $row['contact_number'];
+             $age = $row['age'];
+             // $address
          }
         ?>
-        </b>
-        </div>
 
         <div class="input-group mb-3 w-50">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+            <span class="input-group-text" id="inputGroup-sizing-default">Firstname</span>
           </div>
-          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" name="fn" placeholder="<?php echo "$fn"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3 w-50">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Lastname</span>
+          </div>
+          <input type="text" name="ln" placeholder="<?php echo "$ln"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3 w-50">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Gender</span>
+          </div>
+          <!-- SELECT -->
+          <select name="Gender" class="form-select">
+          <?php
+            if($gender == 1){
+              ?><option value="1">Male</option><?php
+            }else{
+              ?><option value="2">Female</option><?php
+            }
+           ?>
+           </select>
+        </div>
+        <div class="input-group mb-3 w-50">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Contact number</span>
+          </div>
+          <input type="text" name="contact_number" placeholder="<?php echo "$contact_number"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div class="input-group mb-3 w-50">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+          </div>
+          <input type="text" name="age" placeholder="<?php echo "$age"; ?>" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
       </form>
     </div>

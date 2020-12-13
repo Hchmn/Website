@@ -54,7 +54,7 @@ $products = array(
       <a href="customer_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Customer Name</small></p></a>
       <!-- Unset the session first (create a file logout.php in conn folder)
       before you go back to the login page -->
-      <a href="#" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
+      <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
     </div>
   </div>
 
@@ -104,7 +104,7 @@ $products = array(
       quantity = Number(quantity) + 1;
       $(this).children('small').attr('id',quantity);
       $(this).children('small').html('x'+quantity);
-      
+
     });
 
     var checkout = $('#checkout');

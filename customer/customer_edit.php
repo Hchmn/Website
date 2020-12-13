@@ -1,3 +1,11 @@
+<?php
+require($_SERVER['DOCUMENT_ROOT']."/Website/conn/connection.php");
+$customer_id = $_SESSION['customer_id'];
+$sql = "SELECT * FROM customer where customer_id = '$customer_id'";
+$result = mysqli_query($con,$sql);
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 <head>
@@ -19,16 +27,30 @@
       <a href="index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Customer Name</small></p></a>
       <!-- Unset the session first (create a file logout.php in conn folder)
       before you go back to the login page -->
-      <a href="#" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
+      <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
     </div>
   </div>
   <div class="container h-100 p-3" style="background: #60a3bc;">
     <div class="h-auto rounded p-3" style="background: #f39c12;">
       <p class="h5">Customer profile</p>
-      <form class="" action="" method="post">
-        <!-- Editable data here -->
-        <!-- Ikaw nay butang sa mga Input element -->
-        <!-- Kini na design gamita -->
+      <form class="" action="Website\conn\customer_profile.php" method="post">
+        <div class="">
+          <b>
+           <?php while ($rows = mysqli_fetch_assoc($result)) {
+             if($rows['gender'] == 1){
+               $rows['gender'] = 'Male';
+             }
+             else {
+               $rows['gender'] = 'Female';
+             }
+             echo "Name: " . $rows['fname'] . " " . $rows['lname'] . "<br>" . 'Age: ' . $rows['age']
+             . "<br>" . "Gender: " . $rows['gender'] . "<br>" . "Contact Number: " . $rows['contact_number'] . "<br>"
+             . "Date Started: " . $rows['date'];
+         }
+        ?>
+        </b>
+        </div>
+
         <div class="input-group mb-3 w-50">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
@@ -38,10 +60,14 @@
       </form>
     </div>
     <div class="h-auto rounded p-3 mt-3" style="background: #f39c12;">
+
+      <form class="" action="\Website\conn\claim_card.php" method="post">
       <div class="d-flex flex-row justify-content-around">
         <p class="h5 col">Card</p>
-        <button class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i>  Claim Card</button>
+        <button class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i name="claim_card">  Claim Card</button>
       </div>
+      </form>
+
       <div class="d-flex flex-row">
         <div id="card id here" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
         style="background: #f39c12;border-radius:10px;">

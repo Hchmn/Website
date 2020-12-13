@@ -44,7 +44,7 @@
  </head>
  <body class="h-100" style="background: rgb(251, 251, 251);">
    <!-- Header -->
-   <div class="container-fluid border border-danger d-flex flex-row" style="height:5vh;background: #c0392b !important;">
+   <div class="container-fluid border border-danger d-flex flex-row" style="height:50px;background: #c0392b !important;">
      <a href="..\customer\index.php" class="col-7"><img src="..\img\logo_250x250.png" alt="logo" class="h-100" style=""></a>
      <div class="col-5 d-flex flex-row pt-2 pb-2 justify-content-end">
        <!-- Redirect to checkout page edit -->

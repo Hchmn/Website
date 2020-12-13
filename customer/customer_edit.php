@@ -14,9 +14,7 @@
   <div class="container-fluid border border-danger d-flex flex-row" style="height:5vh;background: #c0392b !important;">
     <a href="..\customer\index.php" class="col-7"><img src="..\img\logo_250x250.png" alt="logo" class="h-100" style=""></a>
     <div class="col-5 d-flex flex-row pt-2 pb-2 justify-content-end">
-      <!-- Redirect to checkout page edit -->
-      <button href="#" disabled class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style="">
-        <p class="m-0"><i class="fas fa-shopping-cart"></i><small class="">  Check out</small></p></button>
+      <p class="col"></p>
       <!-- Redirect to customer page edit -->
       <a href="index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Customer Name</small></p></a>
       <!-- Unset the session first (create a file logout.php in conn folder)
@@ -64,6 +62,7 @@
         <div class="border border-dark">
           <p>Reciept #</p>
           <p>Purchase Information here</p>
+          <p>TTL Amount</p
         </div>
       </div>
     </div>

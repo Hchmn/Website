@@ -24,7 +24,7 @@
       the output should be in a array
       $output = array(
        array('product_id' => 1, 'quantity' => 1),
-       array('product_id' => 2, 'quantity' => 2),
+       array('product_id' => 2, 'quantity' => 3),
        array('product_id' => 3, 'quantity' => 4)
      );
 

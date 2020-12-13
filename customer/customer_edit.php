@@ -3,6 +3,16 @@ require($_SERVER['DOCUMENT_ROOT']."/Website/conn/connection.php");
 $customer_id = $_SESSION['customer_id'];
 $sql = "SELECT * FROM customer where customer_id = '$customer_id'";
 $result = mysqli_query($con,$sql);
+while ($rows = mysqli_fetch_assoc($result)) {
+     $gender = $rows['gender'];
+     $fn = $rows['fname'];
+     $ln = $rows['lname'];
+     $contact_number = $rows['contact_number'];
+     $age = $rows['age'];
+     // $address
+
+ }
+
 
  ?>
 
@@ -24,7 +34,7 @@ $result = mysqli_query($con,$sql);
     <div class="col-5 d-flex flex-row pt-2 pb-2 justify-content-end">
       <p class="col"></p>
       <!-- Redirect to customer page edit -->
-      <a href="index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Customer Name</small></p></a>
+      <a href="index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fn $ln"; ?></small></p></a>
       <!-- Unset the session first (create a file logout.php in conn folder)
       before you go back to the login page -->
       <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
@@ -34,15 +44,7 @@ $result = mysqli_query($con,$sql);
     <div class="h-auto rounded p-3" style="background: #f39c12;">
       <p class="h5">Customer profile</p>
       <form class="" action="\Website\conn\customer_profile.php" method="post">
-        <?php while ($rows = mysqli_fetch_assoc($result)) {
-             $gender = $rows['gender'];
-             $fn = $rows['fname'];
-             $ln = $rows['lname'];
-             $contact_number = $rows['contact_number'];
-             $age = $rows['age'];
-             // $address
-
-         }
+        <?php
         ?>
 
         <div class="input-group mb-3 w-50">
@@ -90,7 +92,7 @@ $result = mysqli_query($con,$sql);
     </div>
     <div class="h-auto rounded p-3 mt-3" style="background: #f39c12;">
 
-      <form class="" action="index.html" method="post">
+      <form class="" action="\Website\conn\claim_card.php" method="post">
       <div class="d-flex flex-row justify-content-around">
         <p class="h5 col">Card</p>
         <button type = "submit" class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i name="claim_card">  Claim Card</button>
@@ -98,16 +100,26 @@ $result = mysqli_query($con,$sql);
 
       </form>
       <div class="d-flex flex-row">
-        <div id="card id here" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
-        style="background: #f39c12;border-radius:10px;">
-          <p>Card ID #</p>
-          <p>Card Points: </p>
-        </div>
-        <div id="card id here" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
-        style="background: #f39c12;border-radius:10px;">
-          <p>Card ID #</p>
-          <p>Card Points: </p>
-        </div>
+        <?php
+          $sql = "SELECT * FROM customer_card WHERE customer_id = '$customer_id'";
+          $result = mysqli_query($con,$sql);
+
+          while($data = mysqli_fetch_assoc($result)){
+            ?>
+            <div id="<?php echo $data['card_id']; ?>" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
+
+            style="background: #f39c12;border-radius:10px;">
+              <p>Card ID: <?php echo $data['card_id']; ?></p>
+              <p>Card Points:<?php echo $data['total_points']; ?> </p>
+              <!-- ternary operator -->
+
+              <p>Card Status:<?php echo ($data['status'] == 1 )? 'Active': 'Inactive'; ?> </p>
+
+            </div>
+
+            <?php
+          }
+        ?>
       </div>
 
     </div>

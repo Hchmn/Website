@@ -1,7 +1,7 @@
 <?php
-/*
+
   require($_SERVER['DOCUMENT_ROOT']."/Website/conn/connection.php");
-  echo "Welcome customer ".$_SESSION['customer_id'];
+  // echo "Welcome customer ".$_SESSION['customer_id'];
   $customer_id = $_SESSION['customer_id'];
 
   $sql = "SELECT * FROM customer where customer_id = '$customer_id'";
@@ -9,10 +9,17 @@
 
     // $row is a dictionary where the keys are the column names of the table
     // $row['customer_id'], $row['firstname'] ... etc
-    while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["customer_id"]. " - Name: " . $row["fname"]. " " . $row["lname"]. "<br>";
-  }
-*/
+    while ($rows = mysqli_fetch_assoc($result)) {
+         $gender = $rows['gender'];
+         $fn = $rows['fname'];
+         $ln = $rows['lname'];
+         $contact_number = $rows['contact_number'];
+         $age = $rows['age'];
+         // $address
+
+     }
+
+
 
 // Testing product
 /*
@@ -51,7 +58,7 @@ $products = array(
         </p>
       </button>
       <!-- Redirect to customer page edit -->
-      <a href="customer_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Customer Name</small></p></a>
+      <a href="customer_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fn $ln"; ?></small></p></a>
       <!-- Unset the session first (create a file logout.php in conn folder)
       before you go back to the login page -->
       <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
@@ -91,14 +98,15 @@ $products = array(
 <script type="text/javascript">
 // I'm using jquery (search google for what is jquery)
   var cart = []; // an array in which the product_id is being stored
-  $(document).ready(function(){
-    var add_to_cart_btn = $('.add_to_cart'); // get all the element containg with class name "add_to_cart"
-    add_to_cart_btn.click(function(){
-      var get_product_id = $(this).attr('id') // get the element id of the specific element being click in the class "add_to_cart"
-      // alert(get_product_id); // just for you to know what is id being clicked
-      cart.push(get_product_id); // push the product id to the cart array
-      // alert(cart); // just for you to know what is inside in the cart array
-      $('#num_of_items').html('('+ cart.length +')'); // update cart item number
+    $(document).ready(function(){
+      var add_to_cart_btn = $('.add_to_cart'); // get all the element containg with class name "add_to_cart"
+      add_to_cart_btn.click(function(){
+
+        var get_product_id = $(this).attr('id') // get the element id of the specific element being click in the class "add_to_cart"
+        // alert(get_product_id); // just for you to know what is id being clicked
+        cart.push(get_product_id); // push the product id to the cart array
+        //alert(cart); // just for you to know what is inside in the cart array
+        $('#num_of_items').html('('+ cart.length +')'); // update cart item number
 
       var quantity = $(this).children('small').attr('id');
       quantity = Number(quantity) + 1;

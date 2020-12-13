@@ -103,7 +103,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
         <?php
           $sql = "SELECT * FROM customer_card WHERE customer_id = '$customer_id'";
           $result = mysqli_query($con,$sql);
-
           while($data = mysqli_fetch_assoc($result)){
             ?>
             <div id="<?php echo $data['card_id']; ?>" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
@@ -112,11 +111,8 @@ while ($rows = mysqli_fetch_assoc($result)) {
               <p>Card ID: <?php echo $data['card_id']; ?></p>
               <p>Card Points:<?php echo $data['total_points']; ?> </p>
               <!-- ternary operator -->
-
               <p>Card Status:<?php echo ($data['status'] == 1 )? 'Active': 'Inactive'; ?> </p>
-
             </div>
-
             <?php
           }
         ?>

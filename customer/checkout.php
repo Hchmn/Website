@@ -18,6 +18,7 @@
       Then the result of the cart array will be
       [1,2,2,2,3,3,3,3]
 
+      //lis
       filter it out so that you know the quantity of the
       product being purchase by the customer
 
@@ -29,6 +30,18 @@
      );
 
    */
+   require($_SERVER['DOCUMENT_ROOT']."/Website/conn/connection.php");
+   $customer_id = $_SESSION['customer_id'];
+   $sql = "SELECT * FROM customer where customer_id = '$customer_id'";
+   $result = mysqli_query($con,$sql);
+   while ($rows = mysqli_fetch_assoc($result)) {
+        $gender = $rows['gender'];
+        $fn = $rows['fname'];
+        $ln = $rows['lname'];
+        $contact_number = $rows['contact_number'];
+        $age = $rows['age'];
+        // $address
+    }
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -50,10 +63,10 @@
        <!-- Redirect to checkout page edit -->
        <a href="index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0"><p class="m-0"><small>Home</small></p></a>
        <!-- Redirect to customer page edit -->
-       <a href="customer_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Customer Name</small></p></a>
+       <a href="customer_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fn $ln";?></small></p></a>
        <!-- Unset the session first (create a file logout.php in conn folder)
        before you go back to the login page -->
-       <a href="#" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
+       <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
      </div>
    </div>
    <div class="container h-100 p-3" style="background: #60a3bc;">
@@ -89,10 +102,8 @@
          <button type="submit" class="btn btn-dark" name="button">Purchase</button>
        </div>
      </form>
-
-
-
      </div>
+
    </div>
 </body>
 </html>

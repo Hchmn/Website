@@ -51,7 +51,7 @@ session_start();
 				<?php if(isset($_SESSION['ERROR 1'])){
 					?>
 					<div class="">
-						<p class="text-center h6 mt-2 text-danger">INVALID PASSWORD OR USERNAME</p>
+						<p>INVALID PASSWORD OR USERNAME</p>
 					</div>
 					<?php
 					unset($_SESSION['ERROR 1']);

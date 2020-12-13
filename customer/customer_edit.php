@@ -44,8 +44,7 @@ $result = mysqli_query($con,$sql);
                $rows['gender'] = 'Female';
              }
              echo "Name: " . $rows['fname'] . " " . $rows['lname'] . "<br>" . 'Age: ' . $rows['age']
-             . "<br>" . "Gender: " . $rows['gender'] . "<br>" . "Contact Number: " . $rows['contact_number'] . "<br>"
-             . "Date Started: " . $rows['date'];
+             . "<br>" . "Gender: " . $rows['gender'] . "<br>" . "Contact Number: " . $rows['contact_number'] . "<br>";
          }
         ?>
         </b>
@@ -61,13 +60,13 @@ $result = mysqli_query($con,$sql);
     </div>
     <div class="h-auto rounded p-3 mt-3" style="background: #f39c12;">
 
-      <form class="" action="\Website\conn\claim_card.php" method="post">
+      <form class="" action="index.html" method="post">
       <div class="d-flex flex-row justify-content-around">
         <p class="h5 col">Card</p>
-        <button class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i name="claim_card">  Claim Card</button>
+        <button type = "submit" class="col-2 btn btn-outline-dark"><i class="far fa-credit-card"></i name="claim_card">  Claim Card</button>
       </div>
-      </form>
 
+      </form>
       <div class="d-flex flex-row">
         <div id="card id here" class="border border-dark m-2 p-3 w-25 flex-column d-flex justify-content-center"
         style="background: #f39c12;border-radius:10px;">

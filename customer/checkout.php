@@ -1,16 +1,52 @@
 <?php
-  $product_id = $_GET['pid']; // get the passed paramenter from the index page named "pid";
-  // just delete or comment out this lines below
-  echo $product_id; // just to show the value
-  echo "<br />";
-  echo gettype($product_id); // notice that it's datatype is in string not in array.
-  print("<br />");
-  // to convert string to array
-  $cart_items = explode(',',$product_id);
-  print_r($cart_items);
-  print("<br />");
-  print(gettype($cart_items));
-  // --- end
+  if(isset($_GET['pid'])){
+      $product_id = $_GET['pid'];
+      $cart_items = explode(',',$product_id);
+      // print_r($cart_items);
+      // print("<br />");
+      // print(gettype($cart_items));
+      // print("<br/>");
+      $prod_id = [];
+      $prod_id = $cart_items;
+      // print(count($prod_id));
+      // print("<br/>");
+      //remove duplicated $product_id
+      for($i = 0; $i < count($prod_id); $i++){
+          $j = $i;
+          $temp = $prod_id[$i];
+          for($k = 0; $k < count($prod_id); $k++){
+            if($j!= $k)
+            {
+              if($temp==$prod_id[$k]){
+                $prod_id[$k]="";
+              }
+            }
+          }
+      }
+
+      $output = array();
+
+      for($i = 0; $i < count($prod_id); $i++){
+          $output = array_count_values($cart_items);
+      }
+      // print_r($output);
+      // print("<br/>");
+
+      foreach ($output as $test => $value) {
+          echo " product_id: " . $test ;
+          echo "quantity:" . $value . "<br/>";
+      }
+  }
+  else {
+      $product_id = NULL;
+  }
+
+
+  // $counter = 0;
+  // while($counter <)
+
+  //this is to count how many times had the product id repeated impelementing associative array.
+
   /*
     algorithm:
       if you notice you can click(add to cart) multiple times in a product
@@ -42,6 +78,9 @@
         $age = $rows['age'];
         // $address
     }
+    //
+    // $query_product = "SELECT * FROM product";
+    // $result = mysql_query($con,$query_product);
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -55,6 +94,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
  </head>
+
  <body class="h-100" style="background: rgb(251, 251, 251);">
    <!-- Header -->
    <div class="container-fluid border border-danger d-flex flex-row" style="height:50px;background: #c0392b !important;">
@@ -78,23 +118,49 @@
      </div>
      <form class="" action="" method="post">
        <div class="list_of_product">
-         <?php  ?>
+        <?php
+          $total = 0;
+          $total_product_price = 0;
+          $product_quantity = 0;
+
+        // I think buhat ko dres if statement to test if naa bai sulod ang product_id nga gi check_out
+          if(!empty($product_id)){
+          foreach ($output as $id => $value) {
+            $product_quantity = $value;
+            $sql = "SELECT * FROM product where product_id = $id";
+            $products = mysqli_query($con,$sql);
+
+              while($rows = mysqli_fetch_assoc($products)){
+              if ($id == $rows['product_id'])
+              {
+                $id = $rows['product_id'];
+                $product_name = $rows['product_name'];
+                $product_price = $rows['price'];
+                $total_product_price = ($product_quantity * $product_price);
+              }
+            }
+          $total = $total + $total_product_price;
+      ?>
          <div class="border h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
-           <input type="hidden" name="product_id[]" value="product_id">
-           <input type="hidden" name="product_quantity[]" value="product_quantity">
-           <input type="hidden" name="product_price[]" value="product_price">
-           <p class="col m-2">Product name 1</p>
-           <p class="col m-2">1500</p>
-           <p class="col m-2">2</p>
-           <p class="col m-2">3000</p>
+           <input type="hidden" name="product_id[]" value="<?php echo "$id";?>">
+           <input type="hidden" name="product_quantity[]" value="<?php echo "$product_quantity";?>">
+           <input type="hidden" name="product_price[]" value="<?php echo "$product_price";?>">
+           <p class="col m-2"><?php echo $product_name;?></p>
+           <p class="col m-2"><?php echo $product_price;?></p>
+           <p class="col m-2"><?php echo $product_quantity;?></p>
+           <p class="col m-2"><?php echo $total_product_price;?></p>
          </div>
-         <?php  ?>
+        <?php
+       }
+       }
+         ?>
+
        </div>
        <div class="h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
          <p class="col m-2"></p>
          <p class="col m-2"></p>
          <p class="col m-2">Total amount:</p>
-         <p class="col m-2">3000</p>
+         <p class="col m-2"><?php echo $total;?></p>
        </div>
        <div class="h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
          <p class="col m-2">Cash</p>

@@ -12,8 +12,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
      // $address
 
  }
-
-
  ?>
 
 <!DOCTYPE html>
@@ -46,7 +44,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
       <form class="" action="\Website\conn\customer_profile.php" method="post">
         <?php
         ?>
-
         <div class="input-group mb-3 w-50">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-default">Firstname</span>

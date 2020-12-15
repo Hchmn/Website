@@ -26,7 +26,7 @@ session_start();
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form action="\Website\conn\login.php" class="" method="post">
+					<form action="\Website\conn\admin.php" class="" method="post">
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -50,22 +50,13 @@ session_start();
 				<?php if(isset($_SESSION['ERROR 1'])){
 					?>
 					<div class="">
-						<p>INVALID PASSWORD OR USERNAME</p>
+						<p>
+              <br>&nbsp &nbsp &nbsp &nbsp &nbspINVALID PASSWORD OR USERNAME</p>
 					</div>
 					<?php
 					unset($_SESSION['ERROR 1']);
 				} ?>
 
-				<div class="mt-4">
-					<div class="d-flex justify-content-center links">
-						Don't have an account? <a href="registration\reg_form.html" class="ml-2">Sign Up</a>
-
-					</div>
-
-          <div class="d-flex justify-content-center links">
-            Admin? Log In Here <a href="admin.php" class="ml-2">Log In</a>
-          </div>
-				</div>
 			</div>
 		</div>
 	</div>

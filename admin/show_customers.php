@@ -47,10 +47,8 @@ while ($rows = mysqli_fetch_assoc($result)) {
        font-size: 20px;
        text-align: left;
        background-color: yellow;
-
      }
      th{
-       Location: center;
        background-color: #c0392b;
        color: white;
      }
@@ -71,47 +69,40 @@ while ($rows = mysqli_fetch_assoc($result)) {
      </div>
    </div>
 
-   <!-- <div class="container mh-100 p-3" style="background: #588c7e;height:30vh;"> -->
      <!-- <div class="h-100 rounded d-flex justify-content-center" style="background: #f39c12;"> -->
        <!-- <img src="..\img\logo_500x500.png" alt="" class="h-100" style="border-radius: 50%;"> -->
        <table>
          <tr>
-           <th>Employee Id</th>
+           <th>Customer Id</th>
            <th>First Name</th>
            <th>Last Name</th>
+           <th>Username</th>
+           <th>Password</th>
            <th>Age</th>
            <th>Gender</th>
            <th>Contact Number</th>
-           <th>Job Position</th>
-           <th>Shift</th>
+           <th>Date Started</th>
+
          </tr>
          <?php
-           $sql = "SELECT * from  employee";
+           $sql = "SELECT * from customer";
            $result = mysqli_query($con,$sql);
-           $type_description = "";
 
            while ($rows = mysqli_fetch_assoc($result)) {
-             if($rows["emp_type_id"] == 1){
-               $type_description = "Cashier";
-             }
-             elseif ($rows["emp_type_id"] == 2) {
-               $type_description = "Admin";
+             $gender = "";
+             if($rows['gender'] == 1){
+                $gender = "Male";
              }
              else {
-               $type_description = "Manager";
+               $gender = "Female";
              }
-             echo "<tr><td>" . $rows["employee_id"] . "</td> <td>" . $rows["fname"] . "</td> <td>" . $rows["lname"] . "<t/d>
-             <td>" . $rows["age"] . "</td><td>" . $rows["gender"] . "</td><td>" . $rows["contact_number"] . "</td>
-             <td>" . $type_description . "</td><td>" . $rows['shift'] . "</td> </tr>";
+             echo "<tr><td>" . $rows["customer_id"] . "</td> <td>" . $rows["fname"] . "</td> <td>" . $rows["lname"] . "<t/d>
+             <td>" . $rows["username"] . "</td><td>" . $rows["password"] . "</td><td>" . $rows["age"] . "</td>
+             <td>" . $gender . "</td><td>" . $rows['contact_number'] . "</td>
+             <td>" . $rows['date'] . "</td> </tr>";
            }
            echo "<table/>";
           ?>
        </table>
-     <!-- </div> -->
-
-
-
-
-
  </body>
  </html>

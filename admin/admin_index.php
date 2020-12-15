@@ -35,14 +35,12 @@ while ($rows = mysqli_fetch_assoc($result)) {
    <div class="container-fluid border border-danger d-flex flex-row" style="height:50px;background: #c0392b !important;">
      <a href="..\customer\index.php" class="col-7"><img src="..\img\logo_250x250.png" alt="logo" class="h-100" style=""></a>
      <div class="col-5 d-flex flex-row pt-2 pb-2 justify-content-end">
-       <!-- Redirect to checkout page edit -->
 
-       <a href="show_employees.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Show Employee</small></p></a>
-       <!-- Redirect to customer page edit -->
        <a href="admin_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fname $lname"; ?></small></p></a>
-       <!-- Unset the session first (create a file logout.php in conn folder)
-       before you go back to the login pa  ge -->
+       <a href="show_employees.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Show Employees</small></p></a>
+       <a href="show_customers.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Show Customers</small></p></a>
        <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
+
      </div>
    </div>
 

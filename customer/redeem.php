@@ -21,14 +21,26 @@
 /*
  let $products be the result of your query
 */
-$product_query = "SELECT * FROM product";
-$all_products = mysqli_query($con, $product_query);
+// $redeemable_query = "SELECT * FROM redeemable_product";
+// $all_products = mysqli_query($con, $redeemable_query);
+//
+// $name_product = Null;
+// $products = array();
+// $redeem_prod_id = 0;
+//   while ($redeemable_row = mysqli_fetch_assoc($all_products)) {
+//     $products = $redeem_row;
+//     $redeem_prod_id
+//   }
 
-$products = array();
-
-while($product_row = mysqli_fetch_assoc($all_products)){
-    $products[] = $product_row;
-}
+// while($redeem_row = mysqli_fetch_assoc($all_products)){
+//     $products[] = $redeem_row;
+//
+//     $redeem_prod_id = $redeem_row['product_id'];
+//
+//     $get_product = "SELECT * FROM product where  product_id = '$redeem_prod_id'";
+//     $get = mysqli_query($con, $get_product);
+//     $name_product = $get['product_name'];
+// }
 
 
 // $products = array(
@@ -60,10 +72,10 @@ while($product_row = mysqli_fetch_assoc($all_products)){
         <p class="m-0">
           <i class="fas fa-shopping-cart"></i>
           <small id="num_of_items"> (0)</small>
-          <small class="">  Check out</small>
+          <small class="">  Redeem</small>
         </p>
       </button>
-      <a href="redeem.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Redeem </small></p></a>
+      <a href="customer_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Redeem </small></p></a>
       <!-- Redirect to customer page edit -->
       <a href="customer_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fn $ln"; ?></small></p></a>
       <!-- Unset the session first (create a file logout.php in conn folder)
@@ -79,21 +91,38 @@ while($product_row = mysqli_fetch_assoc($all_products)){
   </div>
   <div class="container mh-100 p-3" style="background: rgba(97, 162, 187, 0.54);">
     <div class="d-flex justify-content-center align-items-center" style="background: #f39c12;height: 5vh;border-radius:20px;">
-      <p class="m-0 h3 text-dark">Redeemable Products</p>
+      <p class="m-0 h3 text-dark">Products</p>
     </div>
     <div class="d-flex row p-3 mt-3 justify-content-center">
       <!-- See readme how it will be populate -->
       <?php
-      // while ($data = mysqli_fetch_assoc($products))
-        foreach($products as $record => $data){
+      $redeemable_query = "SELECT * FROM redeemable_products";
+      $all_products = mysqli_query($con, $redeemable_query);
+
+      while ($data = mysqli_fetch_assoc($all_products)){
+
+          $product_id = $data['product_id'];
+          $product_points = $data['points'];
+
+          $redeem_id = $data['redeemable_product'];
+          $query = "SELECT * FROM product";
+          $result = mysqli_query($con,$query);
+
+          $product_name = Null;
+          while ($row = mysqli_fetch_assoc($result)) {
+            if($product_id == $row['product_id']){
+              $product_name = $row['product_name'];
+            }
+
+          }
        ?>
         <div  class="col-4 m-2 p-3 w-25 flex-column d-flex justify-content-center" style="background: #f39c12;border-radius:10px;">
-          <p class="m-0 h5 text-dark text-center h-75 "><?php echo $data['product_name']; ?></p>
-          <p class="m-0 text-dark text-center h-25 p-2"><?php echo $data['price']." Php"; ?></p>
-          <button id="<?php echo $data['product_id']; ?>"
+          <p class="m-0 h5 text-dark text-center h-75 "><?php echo $product_name; ?></p>
+          <p class="m-0 text-dark text-center h-25 p-2"><?php echo $product_points." Points"; ?></p>
+          <button id="<?php echo $redeem_id;?>"
              type="button" name="button" class="mt-2 btn btn-outline-dark add_to_cart">
             <i class="fas fa-shopping-cart"></i>
-            ADD TO CART <small class="quantity" id="0"></small>
+            REDEEM <small class="quantity" id="0"></small>
           </button>
         </div>
     <?php } ?>
@@ -126,7 +155,7 @@ while($product_row = mysqli_fetch_assoc($all_products)){
     checkout.click(function(){
       // I'll show you what is $_GET and how it being done in php
       // observe the url in your brower (e.g localhost/website/...)
-      var url = '../customer/checkout.php?pid='+cart;
+      var url = '../customer/get_redeem.php?pid='+cart;
       window.location.replace(url);
     });
   });

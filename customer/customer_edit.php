@@ -10,7 +10,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
      $contact_number = $rows['contact_number'];
      $age = $rows['age'];
      // $address
-
  }
  ?>
 
@@ -117,14 +116,28 @@ while ($rows = mysqli_fetch_assoc($result)) {
 
     </div>
     <div class="h-auto rounded p-3 mt-3" style="background: #f39c12;">
+      <?php
+        $sql = "SELECT * FROM receipt_details WHERE customer_id = '$customer_id'";
+        $result = mysqli_query($con,$sql);
+        while($rows = mysqli_fetch_assoc($result))
+        {
+      ?><br>
+
       Purchase history here
       <div class="">
         <div class="border border-dark">
-          <p>Reciept #</p>
-          <p>Purchase Information here</p>
-          <p>TTL Amount</p
+          <p>Reciept # <?php echo $rows['receipt_id']; ?></p>
+          <p>Purchase Information: <br> Date Purchase: <?php echo $rows['date_purchase'];?>
+          <br> Paid Amount:  <?php echo $rows['paid_amount'];?>
+          <br> Discount: <?php echo $rows['discount'];?>
+          <br> Points Earned: <?php echo $rows['points_earned']; ?></p>
+          <br>
+          <p>Total Amount: <?php echo $rows['total_amount']; ?></p
         </div>
       </div>
+      <?php
+      }
+    ?>
     </div>
   </div>
 </body>

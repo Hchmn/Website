@@ -59,7 +59,13 @@ session_start();
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
 						Don't have an account? <a href="registration\reg_form.html" class="ml-2">Sign Up</a>
+
 					</div>
+
+          <div class="d-flex justify-content-center links">
+            Employee? Register Here <a href="registration\reg_employee.html" class="ml-2">Sign Up</a>
+
+          </div>
 				</div>
 			</div>
 		</div>

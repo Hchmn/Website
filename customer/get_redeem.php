@@ -33,8 +33,8 @@
       // print("<br/>");
 
       foreach ($output as $test => $value) {
-          echo " product_id: " . $test ;
-          echo "quantity:" . $value . "<br/>";
+          // echo " product_id: " . $test ;
+          // echo "quantity:" . $value . "<br/>";
       }
   }
   else {
@@ -110,11 +110,11 @@
    <div class="container h-100 p-3" style="background: #60a3bc;">
      <div class="h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
        <p class="col m-2">Product Name</p>
-       <p class="col m-2">Price</p>
+       <p class="col m-2">Points</p>
        <p class="col m-2">Quantity</p>
-       <p class="col m-2">Price</p>
+       <p class="col m-2">Total Points</p>
      </div>
-     <form class="" action="\Website\conn\receipt_details.php" method="post">
+     <form class="" action="\Website\conn\redeem_details.php" method="post">
        <div class="list_of_product">
         <?php
           $total = 0;
@@ -123,35 +123,62 @@
 
         // I think buhat ko dres if statement to test if naa bai sulod ang product_id nga gi check_out
           if(!empty($product_id)){
+            $total = 0;
           foreach ($output as $id => $value) {
             $product_quantity = $value;
-            $sql = "SELECT * FROM product where product_id = $id";
-            $products = mysqli_query($con,$sql);
 
-              while($rows = mysqli_fetch_assoc($products)){
-              if ($id == $rows['product_id'])
-              {
-                $id = $rows['product_id'];
-                $product_name = $rows['product_name'];
-                $product_price = $rows['price'];
-                $total_product_price = ($product_quantity * $product_price);
-              }
+            $sql = "SELECT * FROM redeemable_products where redeemable_product = '$id' ";
+            $redeem = mysqli_query($con,$sql);
+
+            $points = 0;
+            $product_name = "";
+            $prod;
+            $total_product_points = 0;
+            while($rows = mysqli_fetch_assoc($redeem)){
+                $prod = $rows['product_id'];
+                $points = $rows['points'];
+                $total_product_points = ($points * $product_quantity);
+
+                $product = "SELECT * FROM product where product_id = '$prod' ";
+                $get_products = mysqli_query($con, $product);
+
+                while ($get_row = mysqli_fetch_assoc($get_products)) {
+                  $product_name = $get_row['product_name'];
+
+                }
+            //   if ($id == $rows['product_id'])
+            //   {
+            //     $id = $rows['product_id'];
+            //     $product_name = $rows['product_name'];
+            //     // $product_price = $rows['price'];
+            //     // $total_product_price = ($product_quantity * $product_price);
+            //   }
+            //   $points = 0;
+            //   $redeem_prod = "SELECT * FROM redeemable_products where product_id = '$id'";
+            //   $get_redeem = mysqli_query($con, $redeem_prod);
+            //
+            //   while ($get_row = mysqli_fetch_assoc($get_redeem)) {
+            //     $points = $get_row['points'];
+            //     $total_product_points = ($points * $product_quantity);
+            //
+            //   }
             }
-          $total = $total + $total_product_price;
+
+            $total = $total + $total_product_points;
       ?>
          <div class="border h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
-           <input type="hidden" name="product_id[]" value="<?php echo "$id";?>">
+           <input type="hidden" name="product_id[]" value="<?php echo $prod;?>">
            <input type="hidden" name="product_quantity[]" value="<?php echo "$product_quantity";?>">
-           <input type="hidden" name="product_price[]" value="<?php echo "$product_price";?>">
+           <input type="hidden" name="product_points" value="<?php echo "$points";?>">
            <p class="col m-2"><?php echo $product_name;?></p>
-           <p class="col m-2"><?php echo $product_price;?></p>
+           <p class="col m-2"><?php echo $points;?></p>
            <p class="col m-2"><?php echo $product_quantity;?></p>
-           <p class="col m-2"><?php echo $total_product_price;?></p>
+           <p class="col m-2"><?php echo $total_product_points;?></p>
          </div>
         <?php
-       }
-       }
-         ?>
+      }
+     }
+    ?>
 
        </div>
        <div class="h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
@@ -162,8 +189,8 @@
          <p class="col m-2"><?php echo $total;?></p>
        </div>
        <div class="h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
-         <p class="col m-2">Cash</p>
-         <input type="text" name="amount_paid" value="" class="col" placeholder="Input your cash" required>
+         <p class="col m-2">Points</p>
+         <input type="text" name="amount_paid" value="" class="col" placeholder="Input your points" required>
          <button type="submit" class="btn btn-dark" name="button">Purchase</button>
        </div>
      </form>

@@ -1,7 +1,7 @@
 # Admin view
 employee perspective(admin)
 	- transaction_details( all receipt)
-  
+
 	- product
 		- search product
 		- update stocks

@@ -42,14 +42,14 @@ while ($rows = mysqli_fetch_assoc($result)) {
      table {
        border-collapse: collapse;
        width: 100%;
-       color: #d96459;
+       color: black;
        font-family: monospace;
        font-size: 20px;
        text-align: left;
-       background-color: yellow;
+       background-color: orange;
      }
      th{
-       background-color: #c0392b;
+       background-color: orange;
        color: white;
      }
 

@@ -91,7 +91,7 @@
   </div>
   <div class="container mh-100 p-3" style="background: rgba(97, 162, 187, 0.54);">
     <div class="d-flex justify-content-center align-items-center" style="background: #f39c12;height: 5vh;border-radius:20px;">
-      <p class="m-0 h3 text-dark">Products</p>
+      <p class="m-0 h3 text-dark"> Redeemable Products</p>
     </div>
     <div class="d-flex row p-3 mt-3 justify-content-center">
       <!-- See readme how it will be populate -->

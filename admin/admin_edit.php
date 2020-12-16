@@ -41,12 +41,13 @@ while ($rows = mysqli_fetch_assoc($result)) {
       <a href="admin_index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fn $ln"; ?></small></p></a>
       <!-- Unset the session first (create a file logout.php in conn folder)
       before you go back to the login page -->
+      <!-- <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>Stocks</small></p></a> -->
       <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
     </div>
   </div>
   <div class="container h-100 p-3" style="background: #60a3bc;">
     <div class="h-auto rounded p-3" style="background: #f39c12;">
-      <p class="h5">Customer profile</p>
+      <p class="h5">Admin profile</p>
       <form class="" action="\Website\conn\adminprofile.php" method="post">
         <?php
         ?>
@@ -93,7 +94,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
       <button type="submit" name="change_profile">Save</button>
       </form>
     </div>
-
 
   </div>
 </body>

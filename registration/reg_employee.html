@@ -34,7 +34,7 @@
                     <h2 class="title">Employee Registration Form</h2>
                 </div>
                 <div class="card-body">
-                    <form action ="\Website\conn\reg.php" method="POST">
+                    <form action ="\Website\conn\employee_reg.php" method="POST">
                         <div class="form-row m-b-55">
                             <div class="name">Name</div>
                             <div class="value">
@@ -55,21 +55,36 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Username</div>
+                            <div class="name">Position</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-5" type="text" name="username" required>
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select name="position" required>
+                                            <option disabled="disabled" selected="selected">Choose option</option>
+                                            <option value = "1">Cashier</option>
+                                            <option value = "3">Manager</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="name">Password</div>
+                        <!-- <div class="form-row">
+                            <div class="name">Position</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" name="position" required>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="form-row">
+                            <div class="name">Shift</div>
                             <div class="value">
                                 <div class="input-group">
                                     <input class="input--style-5" type="password" name="password" required>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-row m-b-55">
                             <div class="name">Age</div>
                             <div class="value">
@@ -105,7 +120,7 @@
                                             <option disabled="disabled" selected="selected">Choose option</option>
                                             <option value = "1">Male</option>
                                             <option value = "2">Female</option>
-                                            
+
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>

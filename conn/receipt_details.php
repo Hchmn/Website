@@ -27,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $paid_amount = $_POST['amount_paid'];
   $points_earned = 50;
 
+  if($paid_amount >= $total_amount){
   $query = "INSERT INTO receipt_details VALUES (NULL, NOW(),'$total_amount', '$discount', '$paid_amount', '$points_earned',
             '$customer_id', '$card_id', '$employee_id')";
 
@@ -35,7 +36,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   mysqli_query($con,$update_points);
   mysqli_query($con,$query);
-  
+}
+  else {
+    echo "NOT ENOUGH MONEY";
+  }
   //
   // $receipt_detail = "SELECT * FROM receipt_details";
   // $result = mysqli_query($con,$receipt_detail);

@@ -64,6 +64,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
      <div class="col-5 d-flex flex-row pt-2 pb-2 justify-content-end">
 
        <!-- Redirect to customer page edit -->
+       <a href="\Website\registration\reg_employee.html" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Add Employee</small></p></a>
        <a href="admin_index.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fname $lname"; ?></small></p></a>
        <!-- Unset the session first (create a file logout.php in conn folder)
        before you go back to the login pa  ge -->

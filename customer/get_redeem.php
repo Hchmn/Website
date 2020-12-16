@@ -79,6 +79,14 @@
     //
     // $query_product = "SELECT * FROM product";
     // $result = mysql_query($con,$query_product);
+    $sql = "SELECT * FROM customer_card where customer_id = '$customer_id'";
+    $result = mysqli_query($con,$sql);
+    $total_points = 0;
+    $counter = 0;
+    while($rows = mysqli_fetch_assoc($result) and  $counter < 1){
+      $total_points = $rows['total_points'];
+      $counter = $counter + 1;
+    }
  ?>
  <!DOCTYPE html>
  <html lang="en">
@@ -189,8 +197,11 @@
          <p class="col m-2"><?php echo $total;?></p>
        </div>
        <div class="h-auto rounded p-3 d-flex flex-row text-center" style="background: #f39c12;">
-         <p class="col m-2">Points</p>
-         <input type="text" name="amount_paid" value="" class="col" placeholder="Input your points" required>
+         <p class="col m-2">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+           &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp
+           &nbsp &nbsp &nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp
+           &nbsp&nbsp&nbsp&nbsp&nbsp  Card Total Points:  <?php echo "$total_points"; ?> </p>
+         <!-- <input type="text" name="amount_paid" value="" class="col" placeholder="Input your points" required> -->
          <button type="submit" class="btn btn-dark" name="button">Purchase</button>
        </div>
      </form>

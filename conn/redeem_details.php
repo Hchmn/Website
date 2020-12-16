@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         mysqli_query($con,$update_points);
         header("Location: \\Website\\customer\\redeem.php");
         die;
-        
+
   }
   else {
     echo "not enough points";

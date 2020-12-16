@@ -36,9 +36,9 @@ while ($rows = mysqli_fetch_assoc($result)) {
      <a href="..\customer\index.php" class="col-7"><img src="..\img\logo_250x250.png" alt="logo" class="h-100" style=""></a>
      <div class="col-5 d-flex flex-row pt-2 pb-2 justify-content-end">
 
-       <a href="admin_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small><?php echo "$fname $lname"; ?></small></p></a>
        <a href="show_employees.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Show Employees</small></p></a>
        <a href="show_customers.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Show Customers</small></p></a>
+       <a href="admin_edit.php" class="col btn btn-outline-light border-top-0 border-bottom-0 border-right-0 rounded-0 pt-0" style=""><p class="m-0"><small>Profile</small></p></a>
        <a href="\Website\conn\logout.php" class="col btn btn-outline-light border-top-0 border-bottom-0 rounded-0 pt-0" style=""><p class="m-0"><small>logout</small></p></a>
 
      </div>

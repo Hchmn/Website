@@ -202,7 +202,7 @@
            &nbsp &nbsp &nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp
            &nbsp&nbsp&nbsp&nbsp&nbsp  Card Total Points:  <?php echo "$total_points"; ?> </p>
          <!-- <input type="text" name="amount_paid" value="" class="col" placeholder="Input your points" required> -->
-         <button type="submit" class="btn btn-dark" name="button">Purchase</button>
+         <button type="submit" class="btn btn-dark" name="button">Redeem</button>
        </div>
      </form>
      </div>

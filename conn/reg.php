@@ -16,9 +16,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     mysqli_query($con,$sql);
     header("Location: \\Website\\login.php");
     die;
-
-
-
 }
 
 

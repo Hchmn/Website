@@ -32,10 +32,10 @@
       // print_r($output);
       // print("<br/>");
 
-      foreach ($output as $test => $value) {
-          echo " product_id: " . $test ;
-          echo "quantity:" . $value . "<br/>";
-      }
+      // foreach ($output as $test => $value) {
+      //     echo " product_id: " . $test ;
+      //     echo "quantity:" . $value . "<br/>";
+      // }
   }
   else {
       $product_id = NULL;
